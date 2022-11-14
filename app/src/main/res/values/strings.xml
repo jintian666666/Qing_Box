@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">轻Box</string>
+    <string name="all">全部应用</string>
+    <string name="sync">收藏同步</string>
+    <string name="theme">主题管理</string>
+    <string name="setting">设定</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
+    <string name="other">其它</string>
+    <string name="login_state">未登录</string>
+    <string name="daily">小舟从此逝，江海寄余生。</string>
+</resources>

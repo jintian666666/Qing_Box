@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuAll"
+        android:icon="@drawable/all"
+        android:title="@string/all"/>
+
+    <item android:id="@+id/menuSync"
+        android:icon="@drawable/sync"
+        android:title="@string/sync"/>
+
+    <item android:id="@+id/menuTheme"
+        android:icon="@drawable/theme"
+        android:title="@string/theme"/>
+
+    <item android:title="@string/other">
+
+        <menu>
+
+            <item android:id="@+id/menuSetting"
+                android:icon="@drawable/setting"
+                android:title="@string/setting"/>
+
+            <item android:id="@+id/menuAbout"
+                android:icon="@drawable/about"
+                android:title="@string/about"/>
+
+            <item android:id="@+id/menuExit"
+                android:icon="@drawable/exit"
+                android:title="@string/exit"/>
+
+        </menu>
+
+    </item>
+
+
+</menu>
