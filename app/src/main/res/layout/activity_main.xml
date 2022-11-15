@@ -17,7 +17,7 @@
             android:id="@+id/layoutToolBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/gradient_theme"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"

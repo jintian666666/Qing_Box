@@ -26,14 +26,10 @@ import lombok.SneakyThrows;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.drawerLayout)
-    DrawerLayout drawerLayout;
-    @BindView(R.id.imageMenu)
-    ImageView imageView;
-    @BindView(R.id.navigationView)
-    NavigationView navigationView;
-    @BindView(R.id.bottomNavigationView)
-    BottomNavigationView bottomNavigation;
+    @BindView(R.id.drawerLayout) DrawerLayout drawerLayout;
+    @BindView(R.id.imageMenu) ImageView imageView;
+    @BindView(R.id.navigationView) NavigationView navigationView;
+    @BindView(R.id.bottomNavigationView) BottomNavigationView bottomNavigation;
 
     private ClassifyFragment classify;
     private MeFragment me;
