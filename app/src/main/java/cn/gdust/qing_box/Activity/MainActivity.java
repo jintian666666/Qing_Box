@@ -7,8 +7,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +22,7 @@ import cn.gdust.qing_box.Fragment.ClassifyFragment;
 import cn.gdust.qing_box.Fragment.FavorFragment;
 import cn.gdust.qing_box.Fragment.MeFragment;
 import cn.gdust.qing_box.R;
+import lombok.SneakyThrows;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
 
     private ClassifyFragment classify;
-    private FavorFragment favor;
     private MeFragment me;
 
     private Fragment[] fragments;
     //默认选择第一个fragment
     private int lastSelectedPosition = 0;
+
+    // 定义一个变量，来标识是否退出
+    private static boolean isExit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        favor = new FavorFragment();
+        FavorFragment favor = new FavorFragment();
         classify = new ClassifyFragment();
         me = new MeFragment();
         fragments = new Fragment[]{favor,classify,me}; //将Fragment存进数组
@@ -112,5 +115,39 @@ public class MainActivity extends AppCompatActivity {
         // 因此，只有在用户可以意外地更改UI状态的情况下，才可以使用该commitAllowingStateLoss提交。
         transaction.show(fragments[index]).commit();
     }
+
+    //返回键监听：双击返回退出程序
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //双击返回退出程序
+    private void exit() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(getApplicationContext(), "再按一次返回键退出",
+                    Toast.LENGTH_SHORT).show();
+            // 如果2s内不点击第二次返回则恢复false（子线程延时操作）
+            new Thread(){
+                @SneakyThrows
+                @Override
+                public void run() {
+                    super.run();
+                    Thread.sleep(2000);
+                    isExit = false;
+                }
+            }.start();
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
+
+
 
 }
