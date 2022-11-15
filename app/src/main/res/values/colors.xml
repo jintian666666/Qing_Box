@@ -7,7 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#72CEA9</color>
+    <!--  自定义颜色  -->
+    <color name="colorPrimary">#79BD9A</color>
+    <color name="colorPrimaryLight">#BCDECC</color>
+    <color name="colorGray">#F5F5F5</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGreen">#32CD32</color>

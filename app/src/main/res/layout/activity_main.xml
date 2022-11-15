@@ -8,16 +8,6 @@
     tools:context=".Activity.MainActivity"
     android:id="@+id/drawerLayout">
 
-
-    <!--  侧边抽屉导航  -->
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/layout_navigation_header"/>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -73,7 +63,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_navigation_menu"/>
+            app:menu="@menu/bottom_navigation_menu"
+            app:labelVisibilityMode="selected"
+            app:itemIconTint="@color/selector_bottomnav"
+            app:itemTextColor="@color/selector_bottomnav"
+            app:itemRippleColor="@color/colorPrimary"
+            app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.Body2"/>
 
         <FrameLayout
             android:id="@+id/nav_container"
@@ -88,5 +83,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--  侧边抽屉导航  -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/layout_navigation_header"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //侧拉抽屉图标颜色列表,null为使用本身颜色
+        //侧滑导航当图标是多色系时传参为空
         navigationView.setItemIconTintList(null);
 
         initFragment(lastSelectedPosition,0);
