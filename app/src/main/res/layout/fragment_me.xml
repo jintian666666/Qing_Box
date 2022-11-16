@@ -11,23 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/img_header"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="280dp"-->
-<!--            android:contentDescription="@string/app_name"-->
-<!--            android:src="@drawable/headerlogin"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            android:scaleType="centerCrop"/>-->
-
-<!--        <View-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/img_header"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            android:background="@drawable/gradient_headerlogin"/>-->
+        <ImageView
+            android:id="@+id/img_header"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/header_login"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/tv_lo"
