@@ -14,41 +14,33 @@
         <ImageView
             android:id="@+id/img_header"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="80dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/header_login"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@id/img_header"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/constraint_login">
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/img_header"-->
+<!--            android:background="@drawable/header_layer"/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="登录轻Box"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:includeFontPadding="false"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="体验更多功能"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:includeFontPadding="false"/>
-
-        </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="登录"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textSize="25sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:includeFontPadding="false"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/constraint_login"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"/>-->
 
         <View
             android:id="@+id/viewSupporter"
@@ -57,6 +49,7 @@
             android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="@id/img_header"
             app:layout_constraintStart_toStartOf="parent"/>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_login"
@@ -68,20 +61,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewSupporter">
 
-            <TextView
-                android:id="@+id/text_welcome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Welcome"
-                android:textSize="20sp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintTop_toTopOf="parent"/>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til"
                 android:layout_width="match_parent"
@@ -92,7 +71,9 @@
                 app:boxBackgroundColor="@android:color/transparent"
                 app:startIconDrawable="@drawable/ic_me"
                 android:hint="手机号/邮箱/用户名"
-                app:layout_constraintTop_toBottomOf="@id/text_welcome">
+                app:errorEnabled="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
                     android:id="@+id/input_acc"
@@ -108,14 +89,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_Pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 app:boxBackgroundColor="@android:color/transparent"
                 app:startIconDrawable="@drawable/ic_key"
                 android:hint="密码"
+                app:endIconMode="password_toggle"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
                 app:layout_constraintTop_toBottomOf="@id/til">
 
                 <EditText
@@ -123,17 +108,74 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textPassword"
                     android:textStyle="bold"
+                    android:maxLength="16"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="15sp"
                     tools:ignore="Autofill" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/til_Pass"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="登 录"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textAllCaps="false"
+                app:cornerRadius="10dp"/>
 
+            <TextView
+                android:id="@+id/tv_forgotPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/bt_login"
+                android:gravity="end"
+                android:textSize="13sp"
+                android:text="忘记密码?"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_forgotPass"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                app:backgroundTint="@color/colorWhite"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="1dp"
+                app:cornerRadius="10dp"
+                android:layout_marginTop="40dp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryText"
+                android:text="没有账号?立即注册"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="登录以体验更多功能"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:includeFontPadding="false"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/viewSupporter"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            android:layout_marginStart="18dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
