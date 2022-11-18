@@ -1,17 +1,17 @@
 package cn.gdust.qing_box.Activity;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.navigationView) NavigationView navigationView;
     @BindView(R.id.bottomNavigationView) BottomNavigationView bottomNavigation;
 
+    private FavorFragment favor;
     private ClassifyFragment classify;
     private MeFragment me;
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        FavorFragment favor = new FavorFragment();
+        favor = new FavorFragment();
         classify = new ClassifyFragment();
         me = new MeFragment();
         fragments = new Fragment[]{favor,classify,me}; //将Fragment存进数组

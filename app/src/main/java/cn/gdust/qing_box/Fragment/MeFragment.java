@@ -1,19 +1,20 @@
 package cn.gdust.qing_box.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import cn.gdust.qing_box.Activity.RegisterActivity;
 import cn.gdust.qing_box.R;
 
 /**
@@ -34,6 +35,7 @@ public class MeFragment extends Fragment {
 
     EditText et_acc;
     TextInputLayout textInputLayout;
+    MaterialButton bt_register;
 
     public MeFragment() {
         // Required empty public constructor
@@ -74,6 +76,7 @@ public class MeFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_me, container,false);
         et_acc = view.findViewById(R.id.input_acc);
         textInputLayout = view.findViewById(R.id.til);
+        bt_register = view.findViewById(R.id.bt_register);
         et_acc.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -94,6 +97,15 @@ public class MeFragment extends Fragment {
                 }
             }
         });
+
+        bt_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Inflate the layout for this fragment
         return view;
     }

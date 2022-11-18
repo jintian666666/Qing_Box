@@ -20,28 +20,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"/>
 
-<!--        <View-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/img_header"-->
-<!--            android:background="@drawable/header_layer"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="登录"-->
-<!--            android:textColor="@color/colorPrimary"-->
-<!--            android:textSize="25sp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:includeFontPadding="false"-->
-<!--            app:layout_constraintBottom_toTopOf="@id/constraint_login"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"/>-->
-
         <View
             android:id="@+id/viewSupporter"
             android:layout_width="1dp"
@@ -158,7 +136,7 @@
                 android:layout_marginTop="40dp"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryText"
-                android:text="没有账号?立即注册"/>
+                android:text="没有账号?立即注册" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
