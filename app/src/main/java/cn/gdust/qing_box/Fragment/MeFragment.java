@@ -35,7 +35,7 @@ public class MeFragment extends Fragment {
 
     EditText et_acc;
     TextInputLayout textInputLayout;
-    MaterialButton bt_register;
+    MaterialButton bt_register,bt_login;
 
     public MeFragment() {
         // Required empty public constructor
@@ -77,6 +77,8 @@ public class MeFragment extends Fragment {
         et_acc = view.findViewById(R.id.input_acc);
         textInputLayout = view.findViewById(R.id.til);
         bt_register = view.findViewById(R.id.bt_register);
+        bt_login = view.findViewById(R.id.bt_login);
+
         et_acc.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -103,6 +105,15 @@ public class MeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        bt_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_container,new AccountFragment(),null)
+                        .addToBackStack(null).commit();
             }
         });
 

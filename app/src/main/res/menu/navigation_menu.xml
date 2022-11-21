@@ -3,31 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/menuAll"
-        android:icon="@drawable/all"
+        android:icon="@drawable/ic_apps"
         android:title="@string/all"/>
 
     <item android:id="@+id/menuSync"
-        android:icon="@drawable/sync"
+        android:icon="@drawable/ic_cloud_sync"
         android:title="@string/sync"/>
 
     <item android:id="@+id/menuTheme"
-        android:icon="@drawable/theme"
+        android:icon="@drawable/ic_theme"
         android:title="@string/theme"/>
 
     <item android:title="@string/other">
 
         <menu>
 
-            <item android:id="@+id/menuSetting"
-                android:icon="@drawable/setting"
-                android:title="@string/setting"/>
+            <item android:id="@+id/menuMode"
+                android:icon="@drawable/ic_dark_mode"
+                android:title="@string/nightMode"/>
 
             <item android:id="@+id/menuAbout"
-                android:icon="@drawable/about"
+                android:icon="@drawable/ic_about"
                 android:title="@string/about"/>
 
             <item android:id="@+id/menuExit"
-                android:icon="@drawable/exit"
+                android:icon="@drawable/ic_exit"
                 android:title="@string/exit"/>
 
         </menu>

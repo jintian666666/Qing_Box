@@ -1,12 +1,13 @@
 package cn.gdust.qing_box.Activity;
 
-
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.gdust.qing_box.Fragment.AccountFragment;
 import cn.gdust.qing_box.Fragment.ClassifyFragment;
 import cn.gdust.qing_box.Fragment.FavorFragment;
 import cn.gdust.qing_box.Fragment.MeFragment;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FavorFragment favor;
     private ClassifyFragment classify;
     private MeFragment me;
+    private AccountFragment account;
 
     private Fragment[] fragments;
     //默认选择第一个fragment
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     // 定义一个变量，来标识是否退出
     private static boolean isExit = false;
+    private static boolean isLogin = false; //是否登录
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +53,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        View headerLayout = navigationView.inflateHeaderView(R.layout.layout_navigation_header);
+        headerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "我点击了头部", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         favor = new FavorFragment();
         classify = new ClassifyFragment();
         me = new MeFragment();
-        fragments = new Fragment[]{favor,classify,me}; //将Fragment存进数组
+        account = new AccountFragment();
+
+        fragments = new Fragment[]{favor,classify,me,account}; //将Fragment存进数组
 
         //点击ToolBar的菜单按钮也可将侧滑抽屉拉出
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +106,45 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        //侧边栏NavigationView的item点击事件
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menuAll:
+                        Toast.makeText(MainActivity.this, "全部应用", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.menuSync:
+                        Toast.makeText(MainActivity.this, "收藏同步", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.menuTheme:
+                        Toast.makeText(MainActivity.this, "主题管理", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.menuMode:
+                        Toast.makeText(MainActivity.this, "夜间模式", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.menuAbout:
+//                        Toast.makeText(MainActivity.this, "关于", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        new MaterialAlertDialogBuilder(MainActivity.this)
+                                .setTitle("关于轻Box")
+                                .setMessage("版本：v1.1.0\n" +
+                                        "开发者：LJT\n" +
+                                        "开发时间：2022-10-20\n" +
+                                        "App用途：GDUST毕业设计\n" +
+                                        "联系作者QQ：847860221")
+                                .setPositiveButton("GOT IT！",null)
+                                .show();
+                        return true;
+                    case R.id.menuExit:
+                        finish();
+                        System.exit(0);
+                }
+
+
+                return false;
+            }
+        });
 
     }
 
