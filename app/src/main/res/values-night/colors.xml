@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主题颜色 -->
+    <color name="colorPrimary">#BCDECC</color>
+    <color name="colorPrimaryLight">#BCDECC</color>
+    <color name="colorBgGray">#202020</color>
+    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#303030</color>
+
+    <!--  自定义颜色  -->
+    <color name="colorGreen">#32CD32</color>
+    <color name="colorBgHeader">#3A3A3A</color>
+    <color name="colorGradientTop">#1C1C1C</color>
+    <color name="colorGradientBottom">#1A1A1A</color>
+    <color name="colorToolBarText">#FFFFFF</color>
+    <color name="colorSwitchTrack">#6E8076</color>
+</resources>

@@ -24,14 +24,14 @@
             android:layout_height="30dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_back"
-            app:tint="@color/colorWhite" />
+            app:tint="@color/colorToolBarText" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorToolBarText"
             android:textSize="18sp"
             android:textStyle="bold"/>
 

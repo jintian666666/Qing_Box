@@ -20,6 +20,7 @@
 
             <item android:id="@+id/menuMode"
                 android:icon="@drawable/ic_dark_mode"
+                app:actionLayout="@layout/layout_dark_switch"
                 android:title="@string/nightMode"/>
 
             <item android:id="@+id/menuAbout"

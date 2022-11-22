@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@color/colorGray"
+            app:cardBackgroundColor="@color/colorBgGray"
             app:cardCornerRadius="20dp">
 
             <ListView

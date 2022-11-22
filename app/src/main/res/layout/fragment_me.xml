@@ -53,9 +53,10 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_acc"
                     android:layout_width="match_parent"
+                    android:background="@android:color/transparent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="text"
@@ -81,10 +82,11 @@
                 app:counterMaxLength="16"
                 app:layout_constraintTop_toBottomOf="@id/til">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
                     android:textStyle="bold"

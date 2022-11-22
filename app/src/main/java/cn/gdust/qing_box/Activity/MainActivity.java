@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +28,8 @@ import cn.gdust.qing_box.Fragment.ClassifyFragment;
 import cn.gdust.qing_box.Fragment.FavorFragment;
 import cn.gdust.qing_box.Fragment.MeFragment;
 import cn.gdust.qing_box.R;
+import cn.gdust.qing_box.Utils.DarkModeUtil;
+import cn.gdust.qing_box.Utils.SwitchClickListener;
 import lombok.SneakyThrows;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,11 +38,16 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.imageMenu) ImageView imageView;
     @BindView(R.id.navigationView) NavigationView navigationView;
     @BindView(R.id.bottomNavigationView) BottomNavigationView bottomNavigation;
+    private LinearLayout linearLayout;
+    private SwitchMaterial sw;
 
+    //外部对象
     private FavorFragment favor;
     private ClassifyFragment classify;
     private MeFragment me;
     private AccountFragment account;
+
+    DarkModeUtil darkModeUtil;
 
     private Fragment[] fragments;
     //默认选择第一个fragment
@@ -53,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        linearLayout = (LinearLayout) navigationView.getMenu().findItem(R.id.menuMode).getActionView();
+        sw = linearLayout.findViewById(R.id.darkModeSwitch);
+
         View headerLayout = navigationView.inflateHeaderView(R.layout.layout_navigation_header);
         headerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
         classify = new ClassifyFragment();
         me = new MeFragment();
         account = new AccountFragment();
+
+        darkModeUtil = new DarkModeUtil();
+        darkModeUtil.init(this.getApplication());
+//        darkModeUtil.applySystemMode(MainActivity.this);  //和init冲突bug，要解决更换DarkMode后不重新加载Activity
+        if (darkModeUtil.isDarkMode(this)){
+            sw.setChecked(true);
+        }
 
         fragments = new Fragment[]{favor,classify,me,account}; //将Fragment存进数组
 
@@ -121,10 +141,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "主题管理", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.menuMode:
-                        Toast.makeText(MainActivity.this, "夜间模式", Toast.LENGTH_SHORT).show();
+                        new SwitchClickListener(MainActivity.this,item).darkMode(darkModeUtil,MainActivity.this);
                         return true;
                     case R.id.menuAbout:
-//                        Toast.makeText(MainActivity.this, "关于", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         new MaterialAlertDialogBuilder(MainActivity.this)
                                 .setTitle("关于轻Box")
@@ -141,12 +160,24 @@ public class MainActivity extends AppCompatActivity {
                         System.exit(0);
                 }
 
-
                 return false;
             }
         });
 
+        //夜间模式Switch开关监听
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){
+                    darkModeUtil.applyNightMode(MainActivity.this);
+                }else {
+                    darkModeUtil.applyDayMode(MainActivity.this);
+                }
+            }
+        });
+
     }
+
 
     /**
      * 加载（切换）Fragment

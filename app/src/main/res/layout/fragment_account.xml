@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@color/colorGray"
+            app:cardBackgroundColor="@color/colorBgGray"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp">
 
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@color/colorGray"
+            app:cardBackgroundColor="@color/colorBgGray"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp">
 
@@ -114,7 +114,7 @@
             android:text="@string/unLogin"
             app:cornerRadius="10dp"
             android:textColor="@android:color/holo_red_light"
-            android:backgroundTint="@color/colorGray"
+            android:backgroundTint="@color/colorBgGray"
             android:textStyle="bold"
             android:padding="10dp"
             android:stateListAnimator="@null"/>
