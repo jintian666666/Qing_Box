@@ -1,5 +1,6 @@
 package cn.gdust.qing_box.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -139,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.menuTheme:
                         Toast.makeText(MainActivity.this, "主题管理", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this,ThemeActivity.class);
+                        startActivity(intent);
                         return true;
                     case R.id.menuMode:
                         new SwitchClickListener(MainActivity.this,item).darkMode(darkModeUtil,MainActivity.this);

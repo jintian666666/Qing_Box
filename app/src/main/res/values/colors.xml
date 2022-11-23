@@ -15,4 +15,7 @@
     <color name="colorGradientBottom">#93CAAE</color>
     <color name="colorToolBarText">#FFFFFF</color>
     <color name="colorSwitchTrack">#ADADAD</color>
+
+    <!-- 主题测试颜色 -->
+    <color name="colorBlue">#1470D3</color>
 </resources>
