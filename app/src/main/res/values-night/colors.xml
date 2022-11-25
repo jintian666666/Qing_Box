@@ -18,5 +18,15 @@
 
     <!-- 主题测试颜色 -->
     <color name="colorBlue">#1470D3</color>
+    <color name="themeDefault">@color/colorPrimary</color>
+    <color name="themeHawaiiNight">#C06C84</color>
+    <color name="themeYuanShanQingDai">#F39189</color>
+    <color name="themeSeaSaltCheese">#92B4EC</color>
+    <color name="themeCrabApple">#FFB4B4</color>
+    <color name="themeLavender">#AC8DAF</color>
+    <color name="themeDaisy">#D1D126</color>
+    <color name="themeOrange">#F9AB0D</color>
+    <color name="themeSakuraPink">#F4A7B9</color>
+    <color name="themeWinter">#A0A0A8</color>
 
 </resources>

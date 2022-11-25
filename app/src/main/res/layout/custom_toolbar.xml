@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <!-- 自定义的ToolBar -->
     <LinearLayout
         android:id="@+id/layoutToolBar"

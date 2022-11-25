@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     app:cardBackgroundColor="@color/colorGreen"
-    android:layout_marginTop="20dp"
+    android:layout_marginVertical="10dp"
     app:cardCornerRadius="10dp"
     android:layout_marginHorizontal="15dp"
     android:id="@+id/cardview">
@@ -22,14 +22,16 @@
             android:id="@+id/tv_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绿色"/>
+            android:text="绿色"
+            android:textColor="@color/colorPrimaryText"/>
 
         <ImageView
             android:id="@+id/iv_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_done"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 
