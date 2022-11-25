@@ -68,11 +68,9 @@ public class MainActivity extends AppCompatActivity {
         sw = linearLayout.findViewById(R.id.darkModeSwitch);
 
         View headerLayout = navigationView.inflateHeaderView(R.layout.layout_navigation_header);
-        headerLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "我点击了头部", Toast.LENGTH_SHORT).show();
-            }
+        headerLayout.setOnClickListener(view ->  {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            bottomNavigation.setSelectedItemId(R.id.bnv_me);
         });
 
         favor = new FavorFragment();
@@ -90,16 +88,14 @@ public class MainActivity extends AppCompatActivity {
         fragments = new Fragment[]{favor,classify,me,account}; //将Fragment存进数组
 
         //点击ToolBar的菜单按钮也可将侧滑抽屉拉出
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
+        imageView.setOnClickListener(view -> {
+            drawerLayout.openDrawer(GravityCompat.START);
         });
 
         //侧滑导航当图标是多色系时传参为空
         navigationView.setItemIconTintList(null);
 
+        //应用开启显示的fragment
         initFragment(lastSelectedPosition,0);
 
         //BottomNavigationView点击监听器
@@ -145,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.menuMode:
                         new SwitchClickListener(MainActivity.this,item).darkMode(darkModeUtil,MainActivity.this);
+                        bottomNavigation.setSelectedItemId(R.id.bnv_favor);
                         return true;
                     case R.id.menuAbout:
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -173,8 +170,10 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
                     darkModeUtil.applyNightMode(MainActivity.this);
+                    bottomNavigation.setSelectedItemId(R.id.bnv_favor);
                 }else {
                     darkModeUtil.applyDayMode(MainActivity.this);
+                    bottomNavigation.setSelectedItemId(R.id.bnv_favor);
                 }
             }
         });

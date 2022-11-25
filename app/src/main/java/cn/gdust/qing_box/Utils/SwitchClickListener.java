@@ -27,7 +27,7 @@ public class SwitchClickListener extends SwitchMaterial {
     /**
      * switch开关联动夜间模式开关
      */
-    public void darkMode(DarkModeUtil darkModeUtil,Context context){
+    public void darkMode(DarkModeUtil darkModeUtil, Context context){
         if (!mSwitch.isChecked()){
             darkModeUtil.applyNightMode(context);
             mSwitch.setChecked(true);
