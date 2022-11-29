@@ -70,21 +70,14 @@ public class FavorFragment extends Fragment {
         swipeRefresh = view.findViewById(R.id.swiperRefresh);
         tv_num = view.findViewById(R.id.tv_num);
         swipeRefresh.setColorSchemeColors(ContextCompat.getColor(getContext(),R.color.colorPrimary));
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                String num = tv_num.getText().toString();
-                int value = Integer.parseInt(num);
-                String text = String.valueOf(value+1);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefresh.setRefreshing(false);
-                        tv_num.setText(text);
-                    }
-                },1000);
-            }
-
+        swipeRefresh.setOnRefreshListener(() -> {
+            String num = tv_num.getText().toString();
+            int value = Integer.parseInt(num);
+            String text = String.valueOf(value+1);
+            new Handler().postDelayed(() -> {
+                swipeRefresh.setRefreshing(false);
+                tv_num.setText(text);
+            },1000);
         });
         return view;
     }
