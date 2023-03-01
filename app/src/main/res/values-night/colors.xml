@@ -16,6 +16,9 @@
     <color name="colorToolBarText">#FFFFFF</color>
     <color name="colorSwitchTrack">#6E8076</color>
     <color name="colorIconClassify">#787878</color>
+    <color name="line">#FF404145</color>
+    <color name="itemBackColor">#FF303135</color>
+    <color name="editTextColor">#FFFFFFFF</color>
 
     <!-- 主题测试颜色 -->
     <color name="colorBlue">#1470D3</color>

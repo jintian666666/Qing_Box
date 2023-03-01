@@ -14,4 +14,41 @@
     <string name="me_account">账户管理</string>
     <string name="security">安全</string>
     <string name="unLogin">退出登录</string>
+
+    <string name="日常工具">常用工具</string>
+    <string name="查询工具">查询工具</string>
+    <string name="图片工具">图片工具</string>
+    <string name="设备工具">设备工具</string>
+    <string name="计算工具">计算工具</string>
+    <string name="文字工具">文字工具</string>
+    <string name="其它工具">其它工具</string>
+
+    <!--  常用工具  -->
+    <string name="恋爱话术">恋爱话术-撩妹</string>
+    <string name="QQ变音">QQ变音</string>
+    <string name="刻度尺">刻度尺</string>
+    <string name="指南针">指南针</string>
+    <string name="量角器">量角器</string>
+    <string name="IPTV电视直播">IPTV电视直播</string>
+    <string name="直播中国">直播中国</string>
+    <string name="VIP影视解析">VIP影视解析</string>
+    <string name="影视搜索">影视搜索</string>
+    <string name="水平仪">水平仪</string>
+    <string name="时间屏幕">时间屏幕</string>
+    <string name="LED手机字幕">LED手机字幕</string>
+    <string name="网页获源">网页获源</string>
+    <string name="短网址生成">短网址生成</string>
+    <string name="简易画板">简易画板</string>
+    <string name="每日60秒早报">每日60秒早报</string>
+    <string name="每天60秒读懂世界">每天60秒读懂世界</string>
+    <string name="历史上的今天">历史上的今天</string>
+    <string name="Google翻译">Google翻译</string>
+
+    <!--  查询工具  -->
+    <!--  计算工具  -->
+    <!--  图片工具  -->
+    <!--  设备工具  -->
+    <!--  文字工具  -->
+    <!--  其它工具  -->
+
 </resources>
