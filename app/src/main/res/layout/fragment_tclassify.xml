@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.TClassifyFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBgGray">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorBgGray">
+
+            <!-- 常用工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/common"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_common"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时间屏幕"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="指南针"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OCR文字识别"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 查询工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/query"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_query"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="快递查询"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IP查询"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="号码归属地查询"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="11sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- 计算工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/calculate"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_calculate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="计算器"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="日期计算器"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="进制转换"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 图片工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/image"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二维码工具"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="图片水印"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="九宫格切图"
+                        android:textSize="13sp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 设备工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/device"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="应用管理"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="坏点检测"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看设备信息"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 文字工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/file"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_file"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="摩斯电码"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="数字转上下标"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RC4加解密"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 其它工具 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp">
+
+                <include layout="@layout/layout_classify_item" android:id="@+id/other"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="历史上的今天"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="11sp"
+                        app:backgroundTint="@color/colorBgGray"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="金属探测器"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="13sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="18dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="做决定/转盘"
+                        android:textColor="@color/colorPrimaryText"
+                        app:cornerRadius="20dp"
+                        android:textSize="11sp"
+                        app:backgroundTint="@color/colorBgGray"
+                        android:layout_marginLeft="18dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</FrameLayout>

@@ -27,4 +27,18 @@
         <attr name="margin_vertial" format="dimension"/>
     </declare-styleable>
 
+    <style name="Theme.Tools.FullScreen" parent="Theme.Design.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Theme.Qing_Box.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Tools.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar" />
+
+    <style name="Theme.Tools.PopupOverlay" parent="Widget.AppCompat.PopupMenu.Overflow" />
+
 </resources>

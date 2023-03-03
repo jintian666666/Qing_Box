@@ -51,4 +51,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
     implementation  'io.github.scwang90:refresh-layout-kernel:2.0.5'
+    implementation 'com.robinhood.ticker:ticker:2.0.2'
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.12.0"
+    implementation 'com.kongzue.baseokhttp_v3:baseokhttp_v3:3.2.1'
+    implementation 'com.kongzue.basejson:basejson:1.0.6'
+    implementation 'com.tapadoo.android:alerter:7.0.1'
+    implementation 'com.github.yalantis:ucrop:2.2.6'
+    implementation 'com.airbnb.android:lottie:3.7.0'
 }
