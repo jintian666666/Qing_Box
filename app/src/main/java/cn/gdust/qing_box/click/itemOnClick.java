@@ -8,7 +8,14 @@ import android.widget.Toast;
 import cn.gdust.qing_box.CalculatorActivity;
 import cn.gdust.qing_box.ClockActivity;
 import cn.gdust.qing_box.CompassActivity;
+import cn.gdust.qing_box.ConversionActivity;
+import cn.gdust.qing_box.DateCalculatorActivity;
 import cn.gdust.qing_box.HistoryActivity;
+import cn.gdust.qing_box.IpSiteActivity;
+import cn.gdust.qing_box.PhoneAttributionActivity;
+import cn.gdust.qing_box.PictureNineActivity;
+import cn.gdust.qing_box.PictureWaterActivity;
+import cn.gdust.qing_box.QRCodeActivity;
 import cn.gdust.qing_box.R;
 
 
@@ -37,10 +44,10 @@ public class itemOnClick {
 //            context.startActivity(new Intent(context, PictureColorActivity.class));
         }
         if (name.equals(context.getString(R.string.IP查询))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, IpSiteActivity.class));
         }
         if (name.equals(context.getString(R.string.号码归属地查询))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, PhoneAttributionActivity.class));
         }
     }
 
@@ -51,10 +58,10 @@ public class itemOnClick {
             context.startActivity(new Intent(context, CalculatorActivity.class));
         }
         if (name.equals(context.getString(R.string.日期计算器))) {
-//            context.startActivity(new Intent(context, AvatarMakeActivity.class));
+            context.startActivity(new Intent(context, DateCalculatorActivity.class));
         }
         if (name.equals(context.getString(R.string.进制转换))) {
-//            context.startActivity(new Intent(context, PictureClarityActivity.class));
+            context.startActivity(new Intent(context, ConversionActivity.class));
         }
     }
 
@@ -62,13 +69,13 @@ public class itemOnClick {
         Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
         if (name.equals(context.getString(R.string.二维码工具))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, QRCodeActivity.class));
         }
         if (name.equals(context.getString(R.string.图片水印))) {
-//            context.startActivity(new Intent(context, AvatarMakeActivity.class));
+            context.startActivity(new Intent(context, PictureWaterActivity.class));
         }
         if (name.equals(context.getString(R.string.九宫格切图))) {
-//            context.startActivity(new Intent(context, PictureClarityActivity.class));
+            context.startActivity(new Intent(context, PictureNineActivity.class));
         }
     }
 

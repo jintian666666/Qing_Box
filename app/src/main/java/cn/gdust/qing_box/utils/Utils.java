@@ -52,6 +52,7 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class Utils {
 
+
     public static Bitmap pictureDrawable2Bitmap(PictureDrawable pictureDrawable){
         //图片背景的画笔
         Paint paint = new Paint();
