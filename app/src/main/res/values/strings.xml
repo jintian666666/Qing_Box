@@ -133,5 +133,9 @@
     <string name="磁感强度">磁感强度</string>
     <string name="未探测到金属">未探测到金属</string>
     <string name="探测到金属">探测到金属</string>
+    <string name="设置参数">设置参数</string>
+    <string name="请输入参数内容">请输入参数内容</string>
+    <string name="设置参数内容">设置参数内容</string>
+    <string name="请输入DPI值">请输入DPI值</string>
 
 </resources>
