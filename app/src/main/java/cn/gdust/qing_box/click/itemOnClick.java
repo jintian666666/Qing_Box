@@ -19,6 +19,7 @@ import cn.gdust.qing_box.PictureWaterActivity;
 import cn.gdust.qing_box.QRCodeActivity;
 import cn.gdust.qing_box.R;
 import cn.gdust.qing_box.ScreenActivity;
+import cn.gdust.qing_box.utils.Utils;
 
 
 public class itemOnClick {
@@ -91,7 +92,7 @@ public class itemOnClick {
             context.startActivity(new Intent(context, ScreenActivity.class));
         }
         if (name.equals(context.getString(R.string.查看设备信息))) {
-//            context.startActivity(new Intent(context, PictureClarityActivity.class));
+            Utils.CopyDialog(context,context.getString(R.string.设备信息),Utils.getPhoneInfo(context));
         }
     }
 
