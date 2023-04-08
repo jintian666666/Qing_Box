@@ -121,5 +121,8 @@
     <string name="分享软件">分享软件</string>
     <string name="提取成功">提取成功</string>
     <string name="设备信息">设备信息</string>
+    <string name="请输入文本内容">请输入文本内容</string>
+    <string name="解密">解密</string>
+    <string name="加密">加密</string>
 
 </resources>

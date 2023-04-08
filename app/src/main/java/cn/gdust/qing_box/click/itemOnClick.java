@@ -13,6 +13,7 @@ import cn.gdust.qing_box.ConversionActivity;
 import cn.gdust.qing_box.DateCalculatorActivity;
 import cn.gdust.qing_box.HistoryActivity;
 import cn.gdust.qing_box.IpSiteActivity;
+import cn.gdust.qing_box.MorseCodeActivity;
 import cn.gdust.qing_box.PhoneAttributionActivity;
 import cn.gdust.qing_box.PictureNineActivity;
 import cn.gdust.qing_box.PictureWaterActivity;
@@ -100,7 +101,7 @@ public class itemOnClick {
         Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
         if (name.equals(context.getString(R.string.摩斯电码))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, MorseCodeActivity.class));
         }
         if (name.equals(context.getString(R.string.数字转上下标))) {
 //            context.startActivity(new Intent(context, AvatarMakeActivity.class));
