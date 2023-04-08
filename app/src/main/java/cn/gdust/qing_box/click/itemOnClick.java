@@ -18,6 +18,7 @@ import cn.gdust.qing_box.PictureNineActivity;
 import cn.gdust.qing_box.PictureWaterActivity;
 import cn.gdust.qing_box.QRCodeActivity;
 import cn.gdust.qing_box.R;
+import cn.gdust.qing_box.ScreenActivity;
 
 
 public class itemOnClick {
@@ -87,7 +88,7 @@ public class itemOnClick {
             context.startActivity(new Intent(context, AppActivity.class));
         }
         if (name.equals(context.getString(R.string.坏点检测))) {
-//            context.startActivity(new Intent(context, AvatarMakeActivity.class));
+            context.startActivity(new Intent(context, ScreenActivity.class));
         }
         if (name.equals(context.getString(R.string.查看设备信息))) {
 //            context.startActivity(new Intent(context, PictureClarityActivity.class));
