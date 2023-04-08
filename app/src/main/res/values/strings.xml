@@ -127,5 +127,11 @@
     <string name="转上标">转上标</string>
     <string name="转下标">转下标</string>
     <string name="请输入密钥">请输入密钥</string>
+    <string name="Y轴">Y轴</string>
+    <string name="X轴">X轴</string>
+    <string name="Z轴">Z轴</string>
+    <string name="磁感强度">磁感强度</string>
+    <string name="未探测到金属">未探测到金属</string>
+    <string name="探测到金属">探测到金属</string>
 
 </resources>

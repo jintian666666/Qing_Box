@@ -13,6 +13,7 @@ import cn.gdust.qing_box.ConversionActivity;
 import cn.gdust.qing_box.DateCalculatorActivity;
 import cn.gdust.qing_box.HistoryActivity;
 import cn.gdust.qing_box.IpSiteActivity;
+import cn.gdust.qing_box.MetalDetectionActivity;
 import cn.gdust.qing_box.MorseCodeActivity;
 import cn.gdust.qing_box.PhoneAttributionActivity;
 import cn.gdust.qing_box.PictureNineActivity;
@@ -120,7 +121,7 @@ public class itemOnClick {
             context.startActivity(new Intent(context,HistoryActivity.class));
         }
         if (name.equals(context.getString(R.string.金属探测器))) {
-//            context.startActivity(new Intent(context, AvatarMakeActivity.class));
+            context.startActivity(new Intent(context, MetalDetectionActivity.class));
         }
         if (name.equals(context.getString(R.string.做决定))) {
 //            context.startActivity(new Intent(context, PictureClarityActivity.class));
