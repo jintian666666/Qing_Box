@@ -11,6 +11,7 @@ import cn.gdust.qing_box.ClockActivity;
 import cn.gdust.qing_box.CompassActivity;
 import cn.gdust.qing_box.ConversionActivity;
 import cn.gdust.qing_box.DateCalculatorActivity;
+import cn.gdust.qing_box.ExpressActivity;
 import cn.gdust.qing_box.HistoryActivity;
 import cn.gdust.qing_box.IpSiteActivity;
 import cn.gdust.qing_box.LuckyWheelActivity;
@@ -49,7 +50,7 @@ public class itemOnClick {
         Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
         if (name.equals(context.getString(R.string.快递查询))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, ExpressActivity.class));
         }
         if (name.equals(context.getString(R.string.IP查询))) {
             context.startActivity(new Intent(context, IpSiteActivity.class));

@@ -137,5 +137,6 @@
     <string name="请输入参数内容">请输入参数内容</string>
     <string name="设置参数内容">设置参数内容</string>
     <string name="请输入DPI值">请输入DPI值</string>
+    <string name="请输入快递单号">请输入快递单号</string>
 
 </resources>
