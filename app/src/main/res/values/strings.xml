@@ -111,5 +111,14 @@
     <string name="删除">删除</string>
     <string name="九宫格步骤">九宫格步骤</string>
     <string name="切片已保存">切片已保存</string>
+    <string name="请输入关键字">请输入关键字</string>
+    <string name="搜索">搜索</string>
+    <string name="打开软件">打开软件</string>
+    <string name="卸载软件">卸载软件</string>
+    <string name="复制包名">复制包名</string>
+    <string name="提取APK">提取APK</string>
+    <string name="软件详情">软件详情</string>
+    <string name="分享软件">分享软件</string>
+    <string name="提取成功">提取成功</string>
 
 </resources>

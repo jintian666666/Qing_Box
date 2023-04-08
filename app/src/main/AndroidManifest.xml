@@ -20,19 +20,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AppActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:hardwareAccelerated="true"
+            android:label="@string/应用管理"
+            android:theme="@style/Theme.Qing_Box.NoActionBar"/>
+        <activity
             android:name=".PictureNineActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:hardwareAccelerated="true"
             android:label="@string/九宫格切图"
             android:theme="@style/Theme.Qing_Box.NoActionBar" />
-
         <activity
             android:name=".PictureWaterActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:hardwareAccelerated="true"
             android:label="@string/图片水印"
             android:theme="@style/Theme.Qing_Box.NoActionBar" />
-
         <activity
             android:name=".QRCodeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"

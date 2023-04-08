@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.widget.Toast;
 
+import cn.gdust.qing_box.AppActivity;
 import cn.gdust.qing_box.CalculatorActivity;
 import cn.gdust.qing_box.ClockActivity;
 import cn.gdust.qing_box.CompassActivity;
@@ -83,7 +84,7 @@ public class itemOnClick {
         Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
         if (name.equals(context.getString(R.string.应用管理))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, AppActivity.class));
         }
         if (name.equals(context.getString(R.string.坏点检测))) {
 //            context.startActivity(new Intent(context, AvatarMakeActivity.class));
