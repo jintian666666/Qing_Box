@@ -126,5 +126,6 @@
     <string name="加密">加密</string>
     <string name="转上标">转上标</string>
     <string name="转下标">转下标</string>
+    <string name="请输入密钥">请输入密钥</string>
 
 </resources>
