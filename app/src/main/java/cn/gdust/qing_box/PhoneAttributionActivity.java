@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
@@ -30,6 +29,7 @@ import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.tapadoo.alerter.Alerter;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -100,9 +100,8 @@ public class PhoneAttributionActivity extends AppCompatActivity {
                 textInputLayout.setError(getString(R.string.请输入手机号));
                 textInputLayout.setErrorEnabled(true);
             }else {
-                // TODO: 2023/3/25 号码归属地接口及解析
                 LoadingDialog(PhoneAttributionActivity.this);
-                HttpRequest.build(PhoneAttributionActivity.this, "https://tenapi.cn/v2/phone/tel=" + textInputEditText.getText().toString())
+                HttpRequest.build(PhoneAttributionActivity.this, "https://tenapi.cn/v2/phone?tel=" + textInputEditText.getText().toString())
                         .addHeaders("Content-Type", "application/json")
                         .setResponseListener(new ResponseListener() {
                             @SuppressLint("SetTextI18n")
@@ -110,13 +109,19 @@ public class PhoneAttributionActivity extends AppCompatActivity {
                             public void onResponse(String response, Exception error) {
                                 loadDialog.dismiss();
                                 try {
-                                    Log.d("PhoneAttributionActivity", "onResponse: " + "https://tenapi.cn/v2/phone/tel=" + textInputEditText.getText().toString());
                                     HashMap<String, Object> map = new Gson().fromJson(response, new TypeToken<HashMap<String, Object>>() {}.getType());
+                                    // 获取response json转为map后的data键值对
+                                    Map<String, Object> data = (Map<String, Object>)map.get("data");
                                     TransitionManager.beginDelayedTransition(root, new AutoTransition());
-                                    Log.d("PhoneAttributionActivity", "onResponse: " + map);
                                     card.setVisibility(View.VISIBLE);
-                                    textView.setText(map.get("num") + "\n" + map.get("local") + "\n" + map.get("isp") + "\n" + map.get("type") + "\n" + map.get("std") );
+                                    textView.setText(textInputEditText.getText().toString() + "\n" +
+                                            "归属地：" + data.get("local") + "\n" +
+                                            "号码段：" + data.get("num") + "\n" +
+                                            "卡类型：" + data.get("type") + "\n" +
+                                            "运营商：" + data.get("isp") + "\n" +
+                                            "通信标准：：" + data.get("std"));
                                 } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
                             }
                         }).doPost();
