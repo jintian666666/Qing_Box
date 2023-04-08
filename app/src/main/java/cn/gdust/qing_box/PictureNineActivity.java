@@ -1,12 +1,14 @@
 package cn.gdust.qing_box;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,7 @@ import cn.gdust.qing_box.utils.FileUtil;
 import cn.gdust.qing_box.utils.NinePicBitmapSlicer;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -60,7 +63,6 @@ public class PictureNineActivity extends AppCompatActivity {
     private View resultView;
     private TextView resultTv;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +98,7 @@ public class PictureNineActivity extends AppCompatActivity {
         ninePicImageViews.add(findViewById(R.id.iv_image7));
         ninePicImageViews.add(findViewById(R.id.iv_image8));
         ninePicImageViews.add(findViewById(R.id.iv_image9));
+
     }
 
     public void choose(View v){
@@ -104,8 +107,10 @@ public class PictureNineActivity extends AppCompatActivity {
 
     public void save(View v) {
         if (lastDesBitmaps == null) {
+            //showToast("请先选择图片");
             return;
         }
+        //progressView.setVisibility(View.VISIBLE);
         LoadingDialog(PictureNineActivity.this);
         final String time = new SimpleDateFormat("HHmmss").format(new Date());
         if (!FileUtil.isExistFile(FileUtil.getExternalStorageDir().concat("/轻Box/九宫格切图/").concat(time).concat("/"))) {
@@ -130,18 +135,90 @@ public class PictureNineActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(file -> {
                     Uri uri = Uri.fromFile(file);
+                    //Log.d("xsm-save-files", uri.toString());
                     slices.add(file);
                     sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
                 }, throwable -> {
                     throwable.printStackTrace();
+                    //Toast.makeText(MainActivity.this, "导出失败", Toast.LENGTH_SHORT).show();
+                    //progressView.setVisibility(View.GONE);
                     loadDialog.dismiss();
                     resultView.setVisibility(View.GONE);
                 }, () -> {
+                    //progressView.setVisibility(View.GONE);
                     loadDialog.dismiss();
                     resultView.setVisibility(View.VISIBLE);
                     resultTv.setText(Html.fromHtml(getString(R.string.切片已保存) + parent.getAbsolutePath() + "</font><font color=\"#868686\"></font>"));
                     resultTv.setTag(slices);
                 });
+    }
+
+    public void shareSlices(View v) {
+        if (v.getTag() != null) {
+            final ArrayList<File> slices = (ArrayList<File>) v.getTag();
+            final ArrayList<Uri> sliceUris = new ArrayList<>();
+            Observable.fromArray(slices.toArray(new File[]{}))
+                    .map(file -> {
+                        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                                , new String[]{MediaStore.Images.ImageColumns._ID, MediaStore.Images.ImageColumns.DATA}
+                                , MediaStore.Images.ImageColumns.DATA + "=?"
+                                , new String[]{file.getAbsolutePath()}
+                                , null);
+                        if (cursor != null) {
+                            if (cursor.getCount() != 0) {
+                                cursor.moveToFirst();
+                                int id = cursor.getInt(cursor.getColumnIndex(MediaStore.Images.ImageColumns._ID));
+                                String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA));
+                                cursor.close();
+                                //Log.d("xsm-read-media-database", "id = " + id + ", path = " + path);
+                                return Uri.parse(MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString() + "/" + id);
+                            } else {
+                                cursor.close();
+                                //Log.w("xsm-read-media-database", "cursor is empty");
+                                return null;
+                            }
+                        } else {
+                            //Log.e("xsm-read-media-database", "cursor is null");
+                            return null;
+                        }
+                    }).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<Uri>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            progressView.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onNext(Uri uri) {
+                            //Log.d("xsm-collect-slice-uri", uri.toString());
+                            sliceUris.add(uri);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            progressView.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            //Log.d("xsm-start-wechat", "start wechat with " + slices.size() + " pictures.");
+                            progressView.setVisibility(View.GONE);
+                            Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            intent.setType("image/jpeg");
+                            ComponentName comp = new ComponentName("com.tencent.mm",
+                                    "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+                            intent.setComponent(comp);
+                            intent.setType("image/*");
+                            intent.putExtra("Kdescription", "");
+                            intent.putExtra(Intent.EXTRA_STREAM, sliceUris);
+                            startActivity(intent);
+                        }
+                    });
+
+        }
     }
 
     private BitmapSlicer.BitmapSliceListener bitmapSliceListener = new BitmapSlicer.BitmapSliceListener() {
@@ -170,12 +247,12 @@ public class PictureNineActivity extends AppCompatActivity {
 
         @Override
         public void onSliceFailed() {
+            //Toast.makeText(MainActivity.this, "切片失败", Toast.LENGTH_SHORT).show();
             progressView.setVisibility(View.GONE);
             resultView.setVisibility(View.GONE);
         }
     };
 
-    // TODO: 2023/3/25 选择打开照片闪退bug
     @Override
     protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
 
