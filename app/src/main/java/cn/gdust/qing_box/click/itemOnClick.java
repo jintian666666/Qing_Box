@@ -20,6 +20,7 @@ import cn.gdust.qing_box.PictureWaterActivity;
 import cn.gdust.qing_box.QRCodeActivity;
 import cn.gdust.qing_box.R;
 import cn.gdust.qing_box.ScreenActivity;
+import cn.gdust.qing_box.SmallDigitActivity;
 import cn.gdust.qing_box.utils.Utils;
 
 
@@ -104,7 +105,7 @@ public class itemOnClick {
             context.startActivity(new Intent(context, MorseCodeActivity.class));
         }
         if (name.equals(context.getString(R.string.数字转上下标))) {
-//            context.startActivity(new Intent(context, AvatarMakeActivity.class));
+            context.startActivity(new Intent(context, SmallDigitActivity.class));
         }
         if (name.equals(context.getString(R.string.RC4加解密))) {
 //            context.startActivity(new Intent(context, PictureClarityActivity.class));

@@ -124,5 +124,7 @@
     <string name="请输入文本内容">请输入文本内容</string>
     <string name="解密">解密</string>
     <string name="加密">加密</string>
+    <string name="转上标">转上标</string>
+    <string name="转下标">转下标</string>
 
 </resources>
