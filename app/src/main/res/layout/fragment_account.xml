@@ -44,7 +44,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="欢迎你，用户名"
+                        android:text="Welcome !"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
 

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">轻Box</string>
-    <string name="all">全部应用</string>
+    <string name="all">搜索工具</string>
     <string name="sync">收藏同步</string>
     <string name="theme">主题管理</string>
     <string name="nightMode">夜间模式</string>
@@ -139,5 +139,10 @@
     <string name="请输入DPI值">请输入DPI值</string>
     <string name="请输入快递单号">请输入快递单号</string>
     <string name="开始识别">开始识别</string>
+    <string name="add_collect">添加收藏</string>
+    <string name="收藏管理">收藏管理</string>
+    <string name="功能收藏">功能收藏</string>
+    <string name="全部选择">全部选择</string>
+    <string name="取消全选">取消全选</string>
 
 </resources>

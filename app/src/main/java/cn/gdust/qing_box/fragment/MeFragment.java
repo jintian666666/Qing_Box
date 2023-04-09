@@ -46,8 +46,8 @@ public class MeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (textInputLayout.getEditText().getText().toString().length() > 3){
-                    textInputLayout.setError("长度不能大于3");
+                if (textInputLayout.getEditText().getText().toString().length() > 11){
+                    textInputLayout.setError("长度不能大于11");
                 }else {
                     textInputLayout.setError(null);
                 }

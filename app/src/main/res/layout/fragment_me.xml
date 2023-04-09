@@ -9,14 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_theme">
 
         <ImageView
             android:id="@+id/img_header"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/header_login"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"/>
 

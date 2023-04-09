@@ -1,19 +1,26 @@
 package cn.gdust.qing_box;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
-import java.sql.Connection;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.gdust.qing_box.dbutils.DBUtils;
+import cn.gdust.qing_box.bean.User;
+import cn.gdust.qing_box.dao.UserDao;
+
+import static cn.gdust.qing_box.utils.Utils.LoadingDialog;
+import static cn.gdust.qing_box.utils.Utils.loadDialog;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -30,6 +37,15 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.et_password2)
     EditText et_password2;
 
+    Handler handler = new Handler(Looper.getMainLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            loadDialog.dismiss();
+            String toast = (String) msg.obj;
+            Toast.makeText(RegisterActivity.this, toast ,Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +66,21 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Connection conn = DBUtils.getConnection();
+        Message msg = new Message();
+        LoadingDialog(this);
+        new Thread(() -> {
+            String phone = et_account.getText().toString();
+            String passWord = et_password.getText().toString();
+            User user = new User(phone,passWord);
+            UserDao userDao = new UserDao();
+            if (userDao.add(user)){
+                msg.what = 0x01;
+                msg.obj = "注册成功";
+            }else {
+                msg.what = 0x01;
+                msg.obj = "注册失败";
             }
+            handler.sendMessage(msg);
         }).start();
     }
 }

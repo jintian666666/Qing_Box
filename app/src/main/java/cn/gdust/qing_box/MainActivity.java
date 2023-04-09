@@ -30,9 +30,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.gdust.qing_box.fragment.AccountFragment;
 import cn.gdust.qing_box.fragment.ClassifyFragment;
-import cn.gdust.qing_box.fragment.TClassifyFragment;
 import cn.gdust.qing_box.fragment.FavorFragment;
 import cn.gdust.qing_box.fragment.MeFragment;
+import cn.gdust.qing_box.fragment.TClassifyFragment;
 import cn.gdust.qing_box.utils.DarkModeUtil;
 import cn.gdust.qing_box.utils.SwitchClickListener;
 import lombok.SneakyThrows;
@@ -156,8 +156,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.menuAll:
-                        Toast.makeText(MainActivity.this, "全部应用", Toast.LENGTH_SHORT).show();
+                    case R.id.menuSearch:
+                        startActivity(new Intent(MainActivity.this,SearchActivity.class));
                         return true;
                     case R.id.menuSync:
                         Toast.makeText(MainActivity.this, "收藏同步", Toast.LENGTH_SHORT).show();
@@ -250,7 +250,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     super.run();
-                    Thread.sleep(2000);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     isExit = false;
                 }
             }.start();
@@ -259,7 +263,6 @@ public class MainActivity extends AppCompatActivity {
             System.exit(0);
         }
     }
-
 
 
 }

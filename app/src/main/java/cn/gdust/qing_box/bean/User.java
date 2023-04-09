@@ -19,6 +19,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public User(String phone, String password) {
+        this.username = phone;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -10,7 +10,7 @@
         <item name="colorOnPrimary">@color/colorWhite</item>
         <!-- Secondary brand color. -->
         <!-- 您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件 -->
-        <item name="colorSecondary">@color/colorGreen</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
         <!-- 您的次要品牌颜色的较浅/较深变体，在主题中很少使用 -->
         <item name="colorSecondaryVariant">@color/colorGreen</item>
         <!-- 用于显示在辅助颜色顶部的元素的颜色 -->

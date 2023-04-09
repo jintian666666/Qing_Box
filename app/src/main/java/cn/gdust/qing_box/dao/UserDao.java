@@ -15,7 +15,7 @@ public class UserDao {
 
     //新增
     public static boolean add(User user) {
-        String sql = "insert into user(user_name,phone,create_date,password)values('" + user.getUsername() + "','" + user.getPassword() + "','" + user.getPhone() + "','" + user.getEmail() + "')";
+        String sql = "INSERT INTO tb_user (phone, password) VALUES ('" + user.getPhone() + "','" + user.getPassword() + "')";
         Connection conn = DBUtils.getConnection();
         Statement state = null;
         boolean f = false;

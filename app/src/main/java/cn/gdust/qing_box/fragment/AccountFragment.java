@@ -28,7 +28,7 @@ public class AccountFragment extends Fragment {
         listView2 = view.findViewById(R.id.lv2);
 
         List<MeSetting> data = new ArrayList<>();
-        MeSetting phone = new MeSetting(R.drawable.ic_mobile,"手机号："+"13377771234");
+        MeSetting phone = new MeSetting(R.drawable.ic_mobile,"手机号："+"13692697450");
         data.add(phone);
         MeSetting email = new MeSetting(R.drawable.ic_email,"邮箱："+"未绑定");
         data.add(email);
