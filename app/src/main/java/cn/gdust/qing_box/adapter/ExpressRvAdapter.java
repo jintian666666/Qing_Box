@@ -1,5 +1,7 @@
 package cn.gdust.qing_box.adapter;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +31,17 @@ public class ExpressRvAdapter extends RecyclerView.Adapter<ExpressRvAdapter.Hold
         return holder;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         Express express = exList.get(position);
+        if (position == 0){
+            holder.tv_context.setTextColor(Color.parseColor("#79BD9A"));
+        }
         holder.tv_context.setText(express.getContext());
         holder.tv_time.setText(express.getTime());
         //如果是最新一条物流，则改变context颜色
+
     }
 
     @Override
