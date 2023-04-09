@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
-            app:cardBackgroundColor="#FEEC88"
+            app:cardBackgroundColor="#BCDECC"
             app:cardCornerRadius="20dp">
 
             <LinearLayout
@@ -31,7 +31,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/head"
+                    android:src="@drawable/icon"
                     app:riv_oval="true"
                     android:layout_gravity="center"/>
 

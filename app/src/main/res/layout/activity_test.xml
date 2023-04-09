@@ -34,7 +34,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/head"
+                    android:src="@drawable/icon"
                     app:riv_oval="true"
                     android:layout_gravity="center"/>
 
