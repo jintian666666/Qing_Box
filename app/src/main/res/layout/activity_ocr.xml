@@ -161,7 +161,7 @@
                                         android:padding="12dp"
                                         android:scaleType="fitCenter"
                                         app:srcCompat="@drawable/ic_twotone_content_copy_24"
-                                        app:tint="@color/zts" />
+                                        app:tint="@color/colorPrimary" />
                                 </com.google.android.material.card.MaterialCardView>
 
                             </RelativeLayout>
@@ -208,7 +208,7 @@
                             android:insetBottom="0dp"
                             android:text="@string/选择图片"
                             android:textColor="@color/white"
-                            app:backgroundTint="@color/zts"
+                            app:backgroundTint="@color/colorPrimary"
                             app:rippleColor="@color/rippleColor" />
 
                         <com.google.android.material.button.MaterialButton
@@ -222,7 +222,7 @@
                             android:insetBottom="0dp"
                             android:text="@string/开始识别"
                             android:textColor="@color/white"
-                            app:backgroundTint="@color/zts"
+                            app:backgroundTint="@color/colorPrimary"
                             app:rippleColor="@color/rippleColor" />
 
                     </LinearLayout>

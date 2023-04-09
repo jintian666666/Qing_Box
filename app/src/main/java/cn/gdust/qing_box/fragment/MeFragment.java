@@ -65,12 +65,13 @@ public class MeFragment extends Fragment {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_container,new AccountFragment(),null)
-                        .addToBackStack(null).commit();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.nav_container,new AccountFragment(),null)
+//                        .addToBackStack(null).commit();
             }
         });
 
         return view;
+
     }
 }

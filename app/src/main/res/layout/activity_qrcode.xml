@@ -208,10 +208,10 @@
                             android:layout_marginEnd="4dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            app:dsb_indicatorColor="@color/zts"
+                            app:dsb_indicatorColor="@color/colorPrimary"
                             app:dsb_max="960"
                             app:dsb_min="96"
-                            app:dsb_progressColor="@color/zts"
+                            app:dsb_progressColor="@color/colorPrimary"
                             app:dsb_value="512" />
 
                     </LinearLayout>
@@ -294,7 +294,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
-        android:backgroundTint="@color/zts"
+        android:backgroundTint="@color/colorPrimary"
         android:minWidth="0dp"
         android:text="@string/生成"
         app:icon="@drawable/ic_twotone_touch_app_24"

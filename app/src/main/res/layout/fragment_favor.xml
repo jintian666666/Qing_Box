@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
-        android:backgroundTint="@color/zts"
+        android:backgroundTint="@color/colorPrimary"
         android:minWidth="0dp"
         android:text="@string/收藏管理"
         android:visibility="gone"

@@ -19,7 +19,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -28,36 +31,27 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.gdust.qing_box.fragment.AccountFragment;
 import cn.gdust.qing_box.fragment.ClassifyFragment;
 import cn.gdust.qing_box.fragment.FavorFragment;
 import cn.gdust.qing_box.fragment.MeFragment;
-import cn.gdust.qing_box.fragment.TClassifyFragment;
 import cn.gdust.qing_box.utils.DarkModeUtil;
 import cn.gdust.qing_box.utils.SwitchClickListener;
 import lombok.SneakyThrows;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     @BindView(R.id.drawerLayout) DrawerLayout drawerLayout;
     @BindView(R.id.imageMenu) ImageView imageView;
     @BindView(R.id.navigationView) NavigationView navigationView;
     @BindView(R.id.bottomNavigationView) BottomNavigationView bottomNavigation;
+    @BindView(R.id.view_pager) ViewPager2 viewPager;
     private LinearLayout linearLayout;
     private SwitchMaterial sw;
 
-    //外部Fragment对象
-    private FavorFragment favor;
-    private TClassifyFragment Tclassify;
-    private MeFragment me;
-    private AccountFragment account;
-    private ClassifyFragment classify;
 
     DarkModeUtil darkModeUtil;
 
-    private Fragment[] fragments;
-    //默认选择第一个fragment
-    private int lastSelectedPosition = 0;
+
 
     // 定义一个变量，来标识是否退出
     private static boolean isExit = false;
@@ -86,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //动态获取存储权限，保存二维码图片
+        //动态获取存储权限，保存图片权限
         verifyStoragePermissions(this);
 
         ButterKnife.bind(this);
@@ -95,25 +88,65 @@ public class MainActivity extends AppCompatActivity {
         sw = linearLayout.findViewById(R.id.darkModeSwitch);
 
         View headerLayout = navigationView.inflateHeaderView(R.layout.layout_navigation_header);
+        //header点击事件
         headerLayout.setOnClickListener(view ->  {
             drawerLayout.closeDrawer(GravityCompat.START);
             bottomNavigation.setSelectedItemId(R.id.bnv_me);
         });
 
-        favor = new FavorFragment();
-        Tclassify = new TClassifyFragment();
-        me = new MeFragment();
-        account = new AccountFragment();
-        classify = new ClassifyFragment();
 
         darkModeUtil = new DarkModeUtil();
         darkModeUtil.init(this.getApplication());
-//        darkModeUtil.applySystemMode(MainActivity.this);  //和init冲突bug，要解决更换DarkMode后不重新加载Activity
+//        darkModeUtil.applySystemMode(MainActivity.this);  //TODO 和init冲突bug，要解决更换DarkMode后不重新加载Activity
         if (darkModeUtil.isDarkMode(this)){
             sw.setChecked(true);
         }
 
-        fragments = new Fragment[]{favor,classify,me,account}; //将Fragment存进数组
+
+        //--------------------------------------------------viewPager2-----------------------------------------------
+        // 设置ViewPager适配器
+        MyAdapter adapter = new MyAdapter(getSupportFragmentManager(), getLifecycle());
+        viewPager.setAdapter(adapter);
+
+        // 设置底部导航栏选项选择监听器
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.bnv_favor:
+                        viewPager.setCurrentItem(0);
+                        return true;
+                    case R.id.bnv_classify:
+                        viewPager.setCurrentItem(1);
+                        return true;
+                    case R.id.bnv_me:
+                        viewPager.setCurrentItem(2);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        // 设置ViewPager页面切换监听器
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position) {
+                    case 0:
+                        bottomNavigation.setSelectedItemId(R.id.bnv_favor);
+                        break;
+                    case 1:
+                        bottomNavigation.setSelectedItemId(R.id.bnv_classify);
+                        break;
+                    case 2:
+                        bottomNavigation.setSelectedItemId(R.id.bnv_me);
+                        break;
+                }
+            }
+        });
+        //--------------------------------------------------viewPager2-----------------------------------------------
+
 
         //点击ToolBar的菜单按钮也可将侧滑抽屉拉出
         imageView.setOnClickListener(view -> {
@@ -123,33 +156,7 @@ public class MainActivity extends AppCompatActivity {
         //侧滑导航当图标是多色系时传参为空
         navigationView.setItemIconTintList(null);
 
-        //应用开启显示的fragment
-        initFragment(lastSelectedPosition,0);
 
-        //BottomNavigationView点击监听器
-        bottomNavigation.setOnNavigationItemSelectedListener((item) -> {
-            switch (item.getItemId()){
-                case R.id.bnv_favor:
-                    if (0 != lastSelectedPosition) {
-                        initFragment(lastSelectedPosition, 0);
-                        lastSelectedPosition = 0;
-                    }
-                    return true;
-                case R.id.bnv_classify:
-                    if (1 != lastSelectedPosition) {
-                        initFragment(lastSelectedPosition, 1);
-                        lastSelectedPosition = 1;
-                    }
-                    return true;
-                case R.id.bnv_me:
-                    if (2 != lastSelectedPosition) {
-                        initFragment(lastSelectedPosition, 2);
-                        lastSelectedPosition = 2;
-                    }
-                    return true;
-            }
-            return false;
-        });
 
         //侧边栏NavigationView的item点击事件
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -169,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.menuMode:
                         new SwitchClickListener(MainActivity.this,item).darkMode(darkModeUtil,MainActivity.this);
-                        bottomNavigation.setSelectedItemId(R.id.bnv_favor);
                         return true;
                     case R.id.menuAbout:
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -209,24 +215,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * 加载（切换）Fragment
-     * @param lastIndex 上个显示Fragment的索引
-     * @param index 需要显示的Fragment的索引
-     */
-    private void initFragment(int lastIndex,int index){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.hide(fragments[lastIndex]);
-        //判断该fragment是否已在栈内，如果无，则进栈
-        if (!fragments[index].isAdded()) {
-            transaction.add(R.id.nav_container, fragments[index]);
-        }
-        //否则就从栈内取出展示并进行提交
-        // commit：安排该事务的提交。这一承诺不会立即发生;它将被安排在主线程上，以便在线程准备好的时候完成。
-        // commitAllowingStateLoss：与 commit类似，但允许在活动状态保存后执行提交。这是危险的，因为如果Activity需要从其状态恢复，那么提交就会丢失。
-        // 因此，只有在用户可以意外地更改UI状态的情况下，才可以使用该commitAllowingStateLoss提交。
-        transaction.show(fragments[index]).commit();
-    }
+
 
     //返回键监听：双击返回退出程序
     @Override
@@ -264,5 +253,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    // 自定义ViewPager适配器
+    class MyAdapter extends FragmentStateAdapter {
+
+        public MyAdapter(FragmentManager fragmentManager, Lifecycle lifecycle) {
+            super(fragmentManager, lifecycle);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            switch (position) {
+                case 0:
+                    return new FavorFragment();
+                case 1:
+                    return new ClassifyFragment();
+                case 2:
+                    return new MeFragment();
+                default:
+                    throw new IllegalArgumentException("Invalid position: " + position);
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return 3;
+        }
+    }
 
 }
