@@ -17,6 +17,7 @@ import cn.gdust.qing_box.IpSiteActivity;
 import cn.gdust.qing_box.LuckyWheelActivity;
 import cn.gdust.qing_box.MetalDetectionActivity;
 import cn.gdust.qing_box.MorseCodeActivity;
+import cn.gdust.qing_box.OcrActivity;
 import cn.gdust.qing_box.PhoneAttributionActivity;
 import cn.gdust.qing_box.PictureNineActivity;
 import cn.gdust.qing_box.PictureWaterActivity;
@@ -42,7 +43,7 @@ public class itemOnClick {
             context.startActivity(new Intent(context, CompassActivity.class));
         }
         if (name.equals(context.getString(R.string.OCR文字识别))) {
-//            context.startActivity(new Intent(context, PictureColorActivity.class));
+            context.startActivity(new Intent(context, OcrActivity.class));
         }
     }
 
