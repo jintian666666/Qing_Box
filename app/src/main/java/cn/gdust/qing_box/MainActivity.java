@@ -107,8 +107,9 @@ public class MainActivity extends AppCompatActivity{
         // 设置ViewPager适配器
         MyAdapter adapter = new MyAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager.setAdapter(adapter);
+        viewPager.setUserInputEnabled(false);
 
-        // 设置底部导航栏选项选择监听器
+        // 设置底部导航栏选项选择监听器(点击)
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
